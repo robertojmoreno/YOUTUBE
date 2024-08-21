@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redireccionando a YouTube</title>
+    <script type="text/javascript">
+        function redirectToYouTube() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var youtubeAppUrl = "vnd.youtube://www.youtube.com/channel/@poderosavideos?sub_confirmation=1";
+            var youtubeWebUrl = "https://www.youtube.com/@poderosavideos?sub_confirmation=1";
+
+            if (/android/i.test(userAgent)) {
+                window.location.href = youtubeAppUrl;
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = youtubeAppUrl;
+            } else {
+                window.location.href = youtubeWebUrl;
+            }
+        }
+
+        window.onload = redirectToYouTube;
+    </script>
+</head>
+<body>
+    <p>Redireccionando a YouTube...</p>
+</body>
+</html>
